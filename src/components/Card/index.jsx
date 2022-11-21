@@ -7,7 +7,6 @@ import { Logements } from "../../assets/data/logements";
 const CardContainer = styled.div`
     background-color: #F6F6F6;
     border-radius: 25px;
-    margin: 30px 70px;
 `
 const CardDiv = styled.div`
     display: flex;

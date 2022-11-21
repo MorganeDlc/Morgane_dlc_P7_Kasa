@@ -7,7 +7,7 @@ const HeaderContainer = styled.div `
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    padding-top: 40px;
 `
 const LogoHeader = styled.img`
     width: 210px;
@@ -33,8 +33,8 @@ function Header() {
         <HeaderContainer>
             <LogoHeader src={logo} alt="logo Kasa" />
             <NavHeader>
-            <NavLink to="/">Accueil</NavLink>
-            <NavLink to="/">A Propos</NavLink>
+                <NavLink to="/">Accueil</NavLink>
+                <NavLink to="/">A Propos</NavLink>
             </NavHeader>
         </HeaderContainer>
     )
