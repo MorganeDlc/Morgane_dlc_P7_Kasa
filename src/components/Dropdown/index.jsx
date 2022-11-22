@@ -44,17 +44,17 @@ function DropdownAbout({title, content}) {
     return isOpen ? (
         <DropdownOpen>
             <DropdownButton onClick={() => setIsOpen(false)}>
-            {title}
-            <ImgOpen src={fleche} alt="flèche" />
+                {title}
+                <ImgOpen src={fleche} alt="flèche" />
             </DropdownButton>
             <DropdownContent>{content}</DropdownContent>
         </DropdownOpen>
     ) : (
         <DropdownClosed>
             <DropdownButton onClick={() => setIsOpen(true)}>
-            {title} 
-            <img src={fleche} alt="flèche" />
-          </DropdownButton>
+                {title} 
+                <img src={fleche} alt="flèche" />
+            </DropdownButton>
         </DropdownClosed>
     );
 }
