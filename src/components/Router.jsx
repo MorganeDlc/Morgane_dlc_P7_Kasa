@@ -3,6 +3,7 @@ import Home from "../Pages/Home";
 import Error from "../Pages/Error";
 import Header from "./Header/index";
 import Footer from "./Footer/index";
+import About from "../Pages/About";
 
 import { createGlobalStyle } from 'styled-components'
 import styled from "styled-components";
@@ -25,15 +26,16 @@ const DivApp = styled.div`
 function Router () {
     return (
     <BrowserRouter>
-            <GlobalStyle />
-            <DivApp>
+        <GlobalStyle />
+        <DivApp>
             <Header />
                 <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="*" element={<Error />} />
+                    <Route exact path='/' element={<Home />} />
+                    <Route path='*' element={<Error />} />
+                    <Route exact path='/About' element={<About />} />
                 </Routes>
-                <Footer />
-                </DivApp>
+            <Footer />
+        </DivApp>
     </BrowserRouter>
     );
 }

@@ -10,6 +10,7 @@ const DivFooter = styled.div`
     justify-content: center;
     max-width: 1440px;
     height: 209px;
+    margin-top: 40px;
 `
 const TextFooter = styled.p`
     color: white;

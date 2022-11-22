@@ -1,4 +1,4 @@
-import Banner from '../components/Banner'
+import Banner from '../components/Banner/BannerHome'
 import Card from '../components/Card'
 
 function Home() {

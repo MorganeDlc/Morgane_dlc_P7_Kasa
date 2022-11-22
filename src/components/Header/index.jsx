@@ -1,4 +1,4 @@
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import logo from '../../assets/images/LOGO.png'
 import colors from '../../utils/style/colors'
@@ -16,7 +16,7 @@ const NavHeader = styled.nav`
     display: flex;
     justify-content: space-between;
 `
-const NavLink = styled.p`
+const NavLink = styled(Link)`
     margin-left: 40px;
     text-decoration: none;
     font-weight: lighter;
@@ -33,8 +33,8 @@ function Header() {
         <HeaderContainer>
             <LogoHeader src={logo} alt="logo Kasa" />
             <NavHeader>
-                <NavLink to="/">Accueil</NavLink>
-                <NavLink to="/">A Propos</NavLink>
+                <NavLink to='/'>Accueil</NavLink>
+                <NavLink to='/About'>A Propos</NavLink>
             </NavHeader>
         </HeaderContainer>
     )

@@ -6,7 +6,6 @@ const BannerContainer = styled.div`
     display: flex;
     justify-content: center;
     margin: 40px 0;
-    // border: solid 1px red;
     position: relative;
 `
 const BannerDiv = styled.div`

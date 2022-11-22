@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import colors from '../../utils/style/colors'
 import { Logements } from "../../assets/data/logements";
 
 
@@ -12,14 +11,22 @@ const CardDiv = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 30px;
+    padding: 50px;
+    gap: 50px 60px;
 `
 const CardAspect = styled.div`
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: 300px;
     border-radius: 10px;
     position: relative;
-    margin: 25px;
+`
+const CardColor = styled.div`
+    background: linear-gradient(#FF5F60, #813232);
+    position: absolute;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    padding: 3px;
 `
 const CardTitle = styled.h2`
     color: white;
@@ -27,8 +34,8 @@ const CardTitle = styled.h2`
     font-size: 18px;
     text-decoration; none;
     position: absolute;
-    left: 8px;
-    bottom: 2px;
+    left: 20px;
+    bottom: 0px;
     width: 230px;
     text-shadow: 1px 1px 2px #717171;
 `
@@ -37,7 +44,6 @@ const CardImg = styled.img`
     height: 100%;
     object-fit: cover;
     border-radius: 10px;
-    border: 3px solid ${colors.primary};
 `
 
 function card() {
@@ -47,8 +53,10 @@ function card() {
                 {Logements.map (({title, id, cover}) => (
                     <CardAspect key={id}>
                         <Link to ={`/Logement/${id}`}>
-                        <CardTitle>{title}</CardTitle>
-                        <CardImg src={cover} alt={title} />
+                            <CardColor>
+                                <CardTitle>{title}</CardTitle>
+                                <CardImg src={cover} alt={title} />
+                            </CardColor>
                         </Link>
                     </CardAspect>
                 ))}
