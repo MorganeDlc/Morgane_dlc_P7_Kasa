@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { Logements } from "../../assets/data/logements";
+import { LogementsData } from "../../assets/data/Logements";
 
 
 const CardContainer = styled.div`
@@ -50,9 +50,9 @@ function card() {
     return (
         <CardContainer>
             <CardDiv>
-                {Logements.map (({title, id, cover}) => (
+                {LogementsData.map (({title, id, cover}) => (
                     <CardAspect key={id}>
-                        <Link to ={`/Logement/${id}`}>
+                        <Link to ={`/Logements/${id}`}>
                             <CardColor>
                                 <CardTitle>{title}</CardTitle>
                                 <CardImg src={cover} alt={title} />

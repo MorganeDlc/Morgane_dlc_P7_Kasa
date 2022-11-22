@@ -4,6 +4,7 @@ import Error from "../Pages/Error";
 import Header from "./Header/index";
 import Footer from "./Footer/index";
 import About from "../Pages/About";
+import Logements from "../Pages/Logements";
 
 import { createGlobalStyle } from 'styled-components'
 import styled from "styled-components";
@@ -31,6 +32,7 @@ function Router () {
             <Header />
                 <Routes>
                     <Route exact path='/' element={<Home />} />
+                    <Route exact path="/Logements/:id" element={<Logements />} />
                     <Route path='*' element={<Error />} />
                     <Route exact path='/About' element={<About />} />
                 </Routes>
