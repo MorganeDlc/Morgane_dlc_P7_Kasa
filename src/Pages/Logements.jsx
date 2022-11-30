@@ -2,44 +2,71 @@ import { Navigate, useParams } from "react-router"
 import styled from "styled-components"
 import { LogementsData } from "../assets/data/Logements"
 import colors from "../utils/style/colors"
+import Tags from "../components/Tags"
+import Dropdown from '../components/Dropdown'
+import Rating from "../components/Rating"
 import Carrousel from "../components/Carrousel"
-// import DropdownAbout from "../components/Dropdown"
 
 const PageLogements = styled.div`
-    margin: 0 20px;
+    // margin: 0 20px;
 `
 const LogementInfo = styled.div`
     margin 0 auto;
 `
-const InfoPrio = styled.div`
+const TitleTagsHostRating = styled.div`
     display: flex;
     justify-content: space-between;
     margin-top: 24px;
     margin-bottom: 24px;
     color: ${colors.primary};
 `
-const TitreLogement = styled.div`
+const TitleTags = styled.div`
     display: flex;
     flex-direction: column;
 `
-const DivTags = styled.div`
+const Title = styled.h1`
+    font-size: 36px;
+    font-weight: 500;
+    margin: 0;
+    margin-bottom: 10px;
+`
+const SousTitre = styled.h3`
+    margin: 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 500;
+`
+const DivTag = styled.div`
     display: flex;
     flex-wrap: wrap;
 `
-const Tag = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: ${colors.primary};
-    color: white;
-    border-radius: 10px;
-    height: 25px;
-    padding: 0 17px;
-    font-size: 14px;
-    margin-right: 10px;
-    margin-top: 10px;
+const HostRaiting = styled.div`
 `
-
+const Host = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+`
+const HostName = styled.p`
+    font-size: 18px;
+    max-width: 120px;
+    text-align: right;
+    margin-right: 10px;
+    width: min-content;
+`
+const HostImg = styled.img`
+    border-radius: 300px;
+    height: 64px;
+    width: 64px;
+`
+const DropdownLogement = styled.div`
+    display: flex;
+    justify-content: space-between;
+    column-gap: 76px;
+`
+const List = styled.li`
+    list-style: none;
+`
 
 function Logement () {
     const params = useParams ()
@@ -50,47 +77,38 @@ function Logement () {
     if (LogementFilter.length === 0) { //On vérifie si l'ID est correct
         return <Navigate to="/notfound" replace={true} />
     }
-
     return (
     <PageLogements>
         <Carrousel />
         <LogementInfo>
-            <InfoPrio>
-                <TitreLogement>
-                    <h1>{LogementFind.title}</h1>
-                    <h3>{LogementFind.location}</h3>
-                    <DivTags>
-                        {LogementFind.tags.map ((tag, index) => {
-                            return (
-                                <Tag key={index+id}>{tag}</Tag>
-                            )
-                        })}
-                    </DivTags>
-                </TitreLogement>
-                {/* <HostRaiting> */}
-                    {/* <Host>
-                        <p>{LogementFind.host.name}</p>
-                        <img src={LogementFind.host.picture} alt="Propriétaire" />
+            <TitleTagsHostRating>
+                <TitleTags>
+                    <Title>{LogementFind.title}</Title>
+                    <SousTitre>{LogementFind.location}</SousTitre>
+                    <DivTag>
+                        {LogementFind.tags.map((tags, index) => (
+                            <Tags key={index} getTag={tags}/>
+                        ))}
+                    </DivTag>
+                </TitleTags>
+                <HostRaiting>
+                    <Host>
+                        <HostName>{LogementFind.host.name}</HostName>
+                        <HostImg src={LogementFind.host.picture} alt="Propriétaire" />
                     </Host>
-
-                    {LogementFilter.map(({index, rating}) => {
-                        return (
-                            <RatingDiv key={index+id} />
-                            <Rating rateValue={Number(rating)} />
-                        )
-                    })} */}
-                {/* </HostRaiting> */}
-            </InfoPrio>
-            {/* <DropdownLogement>
-                <DropdownAbout title="Description" content={indexLogement.description}/>
-                <DropdownAbout title="Équipements" content={indexLogement.equipments.map ((equipement, index) => {
+                    <Rating rateValue={LogementFind.rating}/>
+                </HostRaiting>
+            </TitleTagsHostRating>
+            <DropdownLogement>
+                <Dropdown title="Description" content={LogementFind.description}/>
+                <Dropdown title="Équipements" content={LogementFind.equipments.map ((equipement, index) => {
                     return (
-                        <li className="LogementEquipement" key={index/id}>
+                        <List key={index/id}>
                             {equipement}
-                        </li>  
+                        </List>
                     )
-                })
-            </DropdownLogement> */}
+                })} />
+            </DropdownLogement>
         </LogementInfo>
     </PageLogements>
     )

@@ -9,7 +9,8 @@ import Logements from "../Pages/Logements";
 import { createGlobalStyle } from 'styled-components'
 import styled from "styled-components";
 
-const GlobalStyle = createGlobalStyle`
+
+export const GlobalStyle = createGlobalStyle`
     * {
     font-family: 'Montserrat', sans-serif;
     }

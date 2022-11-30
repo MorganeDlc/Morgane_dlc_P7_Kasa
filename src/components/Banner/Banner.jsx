@@ -1,6 +1,4 @@
-import Background from '../../assets/images/Background.png'
 import styled from 'styled-components'
-
 
 const BannerContainer = styled.div`
     display: flex;
@@ -20,10 +18,9 @@ const TitreBanner = styled.h1`
     color: white;
     font-weight: 500;
     font-size: 40px;
-    z-index: 3
+    z-index: 3;
 `
-const BannerImg = styled.div`
-    background: url(${Background});
+const BannerImg = styled.img`
     background-size: cover;
     height: 223px;
     width: 100%;
@@ -39,12 +36,12 @@ const BannerImgDark = styled.div`
     border-radius: 25px;
 `
 
-function Banner() {
+function Banner({texte, image}) {
     return ( 
         <BannerContainer>
             <BannerDiv>
-                <TitreBanner>Chez vous, partout et ailleurs</TitreBanner>
-                <BannerImg />
+                <TitreBanner>{texte}</TitreBanner>
+                <BannerImg src={image} />
                 <BannerImgDark />
             </BannerDiv>
         </BannerContainer>
