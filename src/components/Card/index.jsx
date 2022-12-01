@@ -1,31 +1,43 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { LogementsData } from "../../assets/data/Logements";
+import { device } from '../Device'
 
 
 const CardContainer = styled.div`
-    background-color: #F6F6F6;
-    border-radius: 25px;
-`
-const CardDiv = styled.div`
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 50px;
-    gap: 50px 60px;
+    gap: 50px;
+    justify-content: center;
+
+    @media ${device.tablet} {
+        background-color: #F6F6F6;
+        border-radius: 25px;
+        padding: 50px 0;
+    }
 `
-const CardAspect = styled.div`
-    width: 300px;
-    height: 300px;
-    border-radius: 10px;
-    position: relative;
+const CardLink = styled(Link)`
+    // display: flex;
+    // flex-wrap: wrap;
+    // justify-content: center;
+    // flex-direction: column;
+    // align-items: center;
+    // gap: 40px;
+    // width: 100%;
+    // height: 100%;
+    width: 340px;
+    height: 340px;
+
+    @media ${device.tablet} {
+        // flex-direction: row;
+        // justify-content: center;
+    }
 `
 const CardColor = styled.div`
     background: linear-gradient(#FF5F60, #813232);
     position: absolute;
     border-radius: 10px;
-    width: 100%;
-    height: 100%;
+    width: 340px;
+    height: 340px;
     padding: 3px;
 `
 const CardTitle = styled.h2`
@@ -46,23 +58,20 @@ const CardImg = styled.img`
     border-radius: 10px;
 `
 
-function card() {
+function card ({data, id}) {
     return (
         <CardContainer>
-            <CardDiv>
-                {LogementsData.map (({title, id, cover}) => (
-                    <CardAspect key={id}>
-                        <Link to ={`/Logements/${id}`}>
-                            <CardColor>
-                                <CardTitle>{title}</CardTitle>
-                                <CardImg src={cover} alt={title} />
-                            </CardColor>
-                        </Link>
-                    </CardAspect>
-                ))}
-            </CardDiv>
+            {
+                data.map((card) => (
+                    <CardLink key={card.id} to={`/Logements/${id}`}>
+                        <CardColor>
+                            <CardImg src={card.cover} alt={card.title} />
+                            <CardTitle>{card.title}</CardTitle>
+                        </CardColor>
+                    </CardLink>
+                ))
+            }
         </CardContainer>
     )
 }
-
 export default card

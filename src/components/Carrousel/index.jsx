@@ -2,86 +2,99 @@ import styled from "styled-components"
 import React, { useState } from 'react';
 import FlecheGauche from "../../assets/images/FlecheGauche.png"
 import FlecheDroite from "../../assets/images/FlecheDroite.png"
-import { useParams } from "react-router";
-import { LogementsData } from "../../assets/data/Logements"
+import { device } from '../Device'
 
 const CarrouselContainer = styled.div`
+    width: 100%;
     position: relative;
+`
+const CarrouselFleche = styled.div`
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin: 0px auto;
-    margin-top: 20px;
-    width: 100%;
 `
+
 const ImgFlecheG = styled.img`
     position: absolute;
     cursor: pointer;
     top: 40%;
     left: 20px;
-    width: 40px;
+    width: 20px;
+    z-index: 1;
+
+    @media ${device.tablet} {
+        width: 40px;
+    }
 `
 const ImgFlecheD = styled.img`
     position: absolute;
     cursor: pointer;
     top: 40%;
     right: 20px;
-    width: 40px;
+    width: 20px;
+    z-index: 1;
+
+    @media ${device.tablet} {
+        width: 40px;
+    }
 `
-const DivSlider = styled.div`
-    height: 415px;
+const CarrouselItem = styled.div`
+    height: 100%;
+    align-items: center;
+`
+const View = styled.img`
     object-fit: cover;
-`
-const ImgDiv = styled.img`
+    width: 100%;
+    height: 225px;
     border-radius: 25px;
     object-fit: cover;
-    height: 415px;
+    margin-top: 20px;
+
+    @media ${device.tablet} {
+        height: 450px;
+    }
 `
 const Rate = styled.p`
+    display: flex;
     position: absolute;
     color: white;
     font-size: 18px;
     bottom: 0px;
 `
 
-function Carrousel () {
-    const params = useParams();
-    const id = params.id
-    const LogementFind = LogementsData.find(element => element.id === id)
-    const slides = LogementFind.pictures
+function Carrousel ({pictures}) {
     const [current, setCurrent] = useState(0);
-    const nombreImage = slides.length
+    const nombreImage = pictures.length;
 
     const NextSlide = () => {
-        setCurrent(current === nombreImage -1 ? 0 : current + 1);
-    }
+                setCurrent(current === nombreImage -1 ? 0 : current + 1);
+            }
     const PrevSlide = () => {
-        setCurrent(current === 0 ? nombreImage -1 : current - 1);
+                setCurrent(current === 0 ? nombreImage -1 : current - 1);
+            }
+    
+    if (nombreImage === 1) {
+        return <View src={pictures[0]} alt="présentation logement"></View>
     }
+    return (
+        <CarrouselContainer>
+            <CarrouselFleche>
+                <ImgFlecheD onClick={NextSlide} src={FlecheDroite} alt="suivante" />
+                <ImgFlecheG onClick={PrevSlide} src={FlecheGauche} alt="precedente" />
+                <Rate>{current +1}/{nombreImage}</Rate>
+            </CarrouselFleche>
+            {
+                pictures.map((picture, index) => {
+                    return (
+                        <CarrouselItem key={index}>
+                            {index === current &&
+                            <View src={picture} alt="présentation logement" />}
+                        </CarrouselItem>
+                    )
+                })
+            }
+        </CarrouselContainer>
+    )
 
-    if (nombreImage <= 1) {
-        return <CarrouselContainer>
-            {slides.map ((photos, index) => {
-                return (
-                    <DivSlider key={index+id}>
-                        {index === current && (<ImgDiv src={photos} alt="présentation logement" />)}
-                    </DivSlider>
-                )
-            })}
-        </CarrouselContainer>
-    } else {
-        return <CarrouselContainer>
-            <ImgFlecheD onClick={NextSlide} src={FlecheDroite} alt="suivante" />
-            <ImgFlecheG onClick={PrevSlide} src={FlecheGauche} alt="precedente" />
-            <Rate>{current +1}/{nombreImage}</Rate>
-            {slides.map ((photos, index) => {
-                return (
-                    <DivSlider key={index+id}>
-                        {index === current && (<ImgDiv src={photos} alt="présentation logement" />)}
-                    </DivSlider>
-                )
-            })}
-        </CarrouselContainer>
-    }
 }
-export default Carrousel;
+export default Carrousel
+

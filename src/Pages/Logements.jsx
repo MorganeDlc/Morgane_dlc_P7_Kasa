@@ -6,6 +6,7 @@ import Tags from "../components/Tags"
 import Dropdown from '../components/Dropdown'
 import Rating from "../components/Rating"
 import Carrousel from "../components/Carrousel"
+import { device } from '../components/Device'
 
 const PageLogements = styled.div`
     // margin: 0 20px;
@@ -15,32 +16,52 @@ const LogementInfo = styled.div`
 `
 const TitleTagsHostRating = styled.div`
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     margin-top: 24px;
     margin-bottom: 24px;
     color: ${colors.primary};
+
+    @media ${device.tablet} {
+        justify-content: space-between;
+        flex-direction: row;
+    }
 `
 const TitleTags = styled.div`
     display: flex;
     flex-direction: column;
 `
 const Title = styled.h1`
-    font-size: 36px;
+    font-size: 18px;
     font-weight: 500;
     margin: 0;
     margin-bottom: 10px;
+
+    @media ${device.tablet} {
+        font-size: 36px;
+    }
 `
 const SousTitre = styled.h3`
     margin: 0;
     margin-bottom: 10px;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 500;
+
+    @media ${device.tablet} {
+        font-size: 18px;
+    }
 `
 const DivTag = styled.div`
     display: flex;
     flex-wrap: wrap;
 `
 const HostRaiting = styled.div`
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+
+    @media ${device.tablet} {
+        flex-direction: column;
+    }
 `
 const Host = styled.div`
     display: flex;
@@ -48,21 +69,33 @@ const Host = styled.div`
     align-items: center;
 `
 const HostName = styled.p`
-    font-size: 18px;
+    font-size: 12px;
     max-width: 120px;
     text-align: right;
     margin-right: 10px;
     width: min-content;
+
+    @media ${device.tablet} {
+        font-size: 18px;
+    }
 `
 const HostImg = styled.img`
     border-radius: 300px;
-    height: 64px;
-    width: 64px;
+    height: 32px;
+    width: 32px;
+
+    @media ${device.tablet} {
+        height: 64px;
+        width: 64px;
+    }
 `
 const DropdownLogement = styled.div`
-    display: flex;
-    justify-content: space-between;
-    column-gap: 76px;
+
+    @media ${device.tablet} {
+        display: flex;
+        justify-content: space-between;
+        column-gap: 76px;
+    }
 `
 const List = styled.li`
     list-style: none;
@@ -79,7 +112,7 @@ function Logement () {
     }
     return (
     <PageLogements>
-        <Carrousel />
+        <Carrousel pictures={LogementFind.pictures}/>
         <LogementInfo>
             <TitleTagsHostRating>
                 <TitleTags>

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import logo from '../../assets/images/LOGO.png'
 import colors from '../../utils/style/colors'
+import { device } from '../Device'
 
 const HeaderContainer = styled.div `
     display: flex;
@@ -10,21 +11,30 @@ const HeaderContainer = styled.div `
     padding-top: 40px;
 `
 const LogoHeader = styled.img`
-    width: 210px;
+    width: 150px;
+
+    @media ${device.desktop} {
+        width: 210px;
+    }
 `
 const NavHeader = styled.nav`
     display: flex;
     justify-content: space-between;
 `
 const NavLink = styled(Link)`
-    margin-left: 40px;
+    margin-left: 20px;
     text-decoration: none;
     font-weight: lighter;
-    font-size: 18px;
+    font-size: 12px;
     color: ${colors.primary};
     &:hover {
         text-decoration: underline;
         cursor: pointer;
+    }
+
+    @media ${device.tablet} {
+        margin-left: 40px;
+        font-size: 18px;
     }
 `
 

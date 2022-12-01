@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useState } from "react";
 import fleche from "../../assets/images/fleche.png";
+import { device } from '../Device'
 
 const DropdownOpen = styled.div`
     width: 100%;
@@ -20,8 +21,8 @@ const DropdownButton = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 47px;
-    font-size: 24px;
+    height: 30px;
+    font-size: 13px;
     background-color: #FF6060;
     color: white;
     border: none;
@@ -29,11 +30,20 @@ const DropdownButton = styled.div`
     cursor: pointer;
     padding-left: 20px;
     padding-right: 30px;
+
+    @media ${device.tablet} {
+        font-size: 24px;
+        height: 47px;
+    }
 `
 const DropdownContent = styled.p`
     padding: 25px 18px 15px 18px;
-    font-size: 24px;
+    font-size: 12px;
     font-weight: 300;
+
+    @media ${device.tablet} {
+        font-size: 24px;
+    }
 `
 const ImgOpen = styled.img`
     transform: rotate(180deg);

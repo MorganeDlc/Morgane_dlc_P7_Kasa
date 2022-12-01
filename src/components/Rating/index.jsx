@@ -1,14 +1,22 @@
 import GreyStar from "../../assets/images/GreyStar.png"
 import RedStar from "../../assets/images/RedStar.png"
 import styled from 'styled-components';
+import { device } from '../Device'
+
 
 const DivRating = styled.div`
     display: flex;
+    align-items: center;
 `
 const ImgRating = styled.img`
-    width: 28px;
-    height: 28px;
+    width: 15px;
+    height: 15px;
     padding-left: 10px;
+
+    @media ${device.tablet} {
+        width: 28px;
+        height: 28px;
+    }
 `
 
 function Rating (rateValue) {
