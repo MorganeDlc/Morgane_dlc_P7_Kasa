@@ -12,33 +12,31 @@ const CardContainer = styled.div`
     @media ${device.tablet} {
         background-color: #F6F6F6;
         border-radius: 25px;
-        padding: 50px 0;
+        padding: 50px;
+        justify-content: space-between;
     }
 `
 const CardLink = styled(Link)`
-    // display: flex;
-    // flex-wrap: wrap;
-    // justify-content: center;
-    // flex-direction: column;
-    // align-items: center;
-    // gap: 40px;
-    // width: 100%;
-    // height: 100%;
-    width: 340px;
-    height: 340px;
+    width: 335px;
+    height: 255px;
 
     @media ${device.tablet} {
-        // flex-direction: row;
-        // justify-content: center;
+        width: 340px;
+        height: 340px;
     }
 `
 const CardColor = styled.div`
     background: linear-gradient(#FF5F60, #813232);
     position: absolute;
     border-radius: 10px;
-    width: 340px;
-    height: 340px;
+    width: 335px;
+    height: 255px;
     padding: 3px;
+
+    @media ${device.tablet} {
+        width: 340px;
+        height: 340px;
+    }
 `
 const CardTitle = styled.h2`
     color: white;
@@ -63,7 +61,7 @@ function card ({data, id}) {
         <CardContainer>
             {
                 data.map((card) => (
-                    <CardLink key={card.id} to={`/Logements/${id}`}>
+                    <CardLink key={card.id} to={`/Logements/${card.id}`}>
                         <CardColor>
                             <CardImg src={card.cover} alt={card.title} />
                             <CardTitle>{card.title}</CardTitle>
