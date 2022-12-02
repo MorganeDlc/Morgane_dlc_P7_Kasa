@@ -11,7 +11,7 @@ const DivRating = styled.div`
 const ImgRating = styled.img`
     width: 15px;
     height: 15px;
-    padding-left: 10px;
+    margin-left: 10px;
 
     @media ${device.tablet} {
         width: 28px;

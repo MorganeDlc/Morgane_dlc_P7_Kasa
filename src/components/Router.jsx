@@ -8,21 +8,27 @@ import Logements from "../Pages/Logements";
 
 import { createGlobalStyle } from 'styled-components'
 import styled from "styled-components";
+import { device } from './Device'
 
 
 export const GlobalStyle = createGlobalStyle`
     * {
-    font-family: 'Montserrat', sans-serif;
+        box-sizing: border-box; 
     }
     body {
         background-color: #f5f5f5;
+        font-family: 'Montserrat', sans-serif;
     }
 `
 const DivApp = styled.div`
     max-width: 1440px;
     margin: 0 auto;
     background-color: #ffffff;
-    padding: 0 100px;
+    padding: 0 10px;
+
+    @media ${device.tablet} {
+        padding: 0 100px;
+    }
 `
 
 function Router () {

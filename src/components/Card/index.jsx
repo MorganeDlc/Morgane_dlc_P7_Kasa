@@ -1,39 +1,29 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { device } from '../Device'
+import colors from '../../utils/style/colors'
 
 
 const CardContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
-    gap: 50px;
     justify-content: center;
+    gap: 50px;
 
     @media ${device.tablet} {
         background-color: #F6F6F6;
         border-radius: 25px;
         padding: 50px;
-        justify-content: space-between;
+        // justify-content: space-between;
     }
 `
 const CardLink = styled(Link)`
-    width: 335px;
+    width: 100%;
     height: 255px;
-
-    @media ${device.tablet} {
-        width: 340px;
-        height: 340px;
-    }
-`
-const CardColor = styled.div`
-    background: linear-gradient(#FF5F60, #813232);
-    position: absolute;
+    position: relative;
     border-radius: 10px;
-    width: 335px;
-    height: 255px;
-    padding: 3px;
 
-    @media ${device.tablet} {
+    @media ${device.desktop} {
         width: 340px;
         height: 340px;
     }
@@ -48,12 +38,14 @@ const CardTitle = styled.h2`
     bottom: 0px;
     width: 230px;
     text-shadow: 1px 1px 2px #717171;
+    width: 100%;
 `
 const CardImg = styled.img`
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 10px;
+    border: 2px solid ${colors.primary};
 `
 
 function card ({data, id}) {
@@ -62,10 +54,8 @@ function card ({data, id}) {
             {
                 data.map((card) => (
                     <CardLink key={card.id} to={`/Logements/${card.id}`}>
-                        <CardColor>
                             <CardImg src={card.cover} alt={card.title} />
                             <CardTitle>{card.title}</CardTitle>
-                        </CardColor>
                     </CardLink>
                 ))
             }

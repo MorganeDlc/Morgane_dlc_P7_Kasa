@@ -1,12 +1,12 @@
-import Banner from '../components/Banner/Banner'
+import Banner from '../components/Banner'
 import Card from '../components/Card'
-import background from '../assets/images/Background.png'
 import { LogementsData } from "../assets/data/Logements";
+import Background from "../assets/images/Background.jpg"
 
 function Home() {
     return ( 
     <div className="Home_div">
-        <Banner image={background} texte='Chez vous, partout et ailleurs' />
+        <Banner image={Background} opacite={0.3}>Chez vous,<br /> partout et ailleurs</Banner>
         <Card data={LogementsData}/>
     </div>
     )

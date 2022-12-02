@@ -136,7 +136,7 @@ function Logement () {
                 <Dropdown title="Description" content={LogementFind.description}/>
                 <Dropdown title="Équipements" content={LogementFind.equipments.map ((equipement, index) => {
                     return (
-                        <List key={index/id}>
+                        <List key={index}>
                             {equipement}
                         </List>
                     )

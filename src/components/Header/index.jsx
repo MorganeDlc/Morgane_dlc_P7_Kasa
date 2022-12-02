@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import logo from '../../assets/images/LOGO.png'
 import colors from '../../utils/style/colors'
@@ -21,11 +21,12 @@ const NavHeader = styled.nav`
     display: flex;
     justify-content: space-between;
 `
-const NavLink = styled(Link)`
+const Naviguation = styled(NavLink)`
     margin-left: 20px;
     text-decoration: none;
     font-weight: lighter;
     font-size: 12px;
+    text-transform: uppercase; 
     color: ${colors.primary};
     &:hover {
         text-decoration: underline;
@@ -35,6 +36,7 @@ const NavLink = styled(Link)`
     @media ${device.tablet} {
         margin-left: 40px;
         font-size: 18px;
+        text-transform: none;
     }
 `
 
@@ -43,8 +45,8 @@ function Header() {
         <HeaderContainer>
             <LogoHeader src={logo} alt="logo Kasa" />
             <NavHeader>
-                <NavLink to='/'>Accueil</NavLink>
-                <NavLink to='/About'>A Propos</NavLink>
+                <Naviguation to='/'>Accueil</Naviguation>
+                <Naviguation to='/About'>A Propos</Naviguation>
             </NavHeader>
         </HeaderContainer>
     )
